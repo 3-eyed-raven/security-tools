@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group 'net.jsrbc.security.tools'
+version '1.0.0'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+    mavenLocal()
+    maven {url "http://maven.aliyun.com/nexus/content/groups/public"}
+    mavenCentral()
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", includes: ["*.jar"])
+    implementation 'commons-codec:commons-codec:1.15'
+}
+
+compileJava {
+    doFirst {
+        options.compilerArgs = ["-parameters"]
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
